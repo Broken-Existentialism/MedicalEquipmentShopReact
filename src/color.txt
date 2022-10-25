@@ -1,0 +1,6 @@
+#A4C9FF, rgb(164,201,255) - Baby Blue Eyes
+#3450A7, rgb(52,80,167) - Violet Blue
+#434343, rgb(67,67,67) - Cape Cod
+#6bdddd, rgb(107,221,221) - Aquamarine Blue
+#444b54, rgb(68,75,84) - Mako
+#d96857, rgb(217,104,87) - Jelly Bean

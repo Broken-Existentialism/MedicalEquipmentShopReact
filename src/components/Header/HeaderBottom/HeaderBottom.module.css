@@ -1,0 +1,19 @@
+.headerBottom{
+    border-top: 1px solid #e8e8e8;
+}
+
+.headerBottomMenu{
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerBottomMenu a{
+    display: block;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 23px 0px 23px 0px;
+    line-height: 20px;
+    color: #434343;
+}
+
+

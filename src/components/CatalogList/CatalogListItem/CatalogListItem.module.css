@@ -1,0 +1,87 @@
+.catalogItem {
+    width: 20%;
+    padding: 10px;
+}
+
+.itemInner {
+    position: relative;
+    display: block;
+    height: 100px;
+    padding: 10px 15px 0;
+    background: #fff;
+    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s linear;
+}
+
+.itemInner:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 1;
+    transition: all 0.2s linear;
+}
+
+.itemImg {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    z-index: 3;
+}
+
+.itemImg img {
+    display: block;
+    margin: auto;
+    max-height: 100%;
+}
+
+.itemTitle {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 5px 0 0;
+    font-size: 15px;
+    line-height: 17px;
+    height: 34px;
+    font-weight: bold;
+    color: #3550aa;
+    text-transform: uppercase;
+    transition: all 0.2s linear;
+    z-index: 3;
+}
+
+.itemTitle p {
+    display: block;
+    line-height: 17px;
+}
+
+.itemInner:hover::before {
+    top: -3px;
+    bottom: -3px;
+    left: -5px;
+    right: -5px;
+    background: #d96857;
+}
+
+.itemInner:hover .itemImg img {
+    filter: brightness(100);
+}
+
+.itemInner:hover .itemTitle {
+    color: #fff;
+    font-size: 16px;
+    margin-top: 7px;
+    line-height: 18px;
+    height: 36px;
+}
+  
+.itemInner:hover .itemTitle p {
+    line-height: 18px;
+}

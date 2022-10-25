@@ -1,0 +1,7 @@
+.catalogGrid{
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}

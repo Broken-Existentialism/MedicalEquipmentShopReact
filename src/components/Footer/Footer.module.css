@@ -1,0 +1,76 @@
+.footerContainer{
+    border-top: 1px solid #e8e8e8;
+}
+
+.footerInfo{
+    display: flex;
+    justify-content: space-between;
+}
+
+.accsesBlockInfo{
+    display: flex;
+    flex-direction: column;
+}
+
+.accsesBlockInfo .accsesBlockInfoItem{
+    position: relative;
+    display: block;
+    line-height: 22px;
+    padding: 0 0 0 35px;
+    margin: 15px 0px 0px 0px;
+    color: #434343;
+}
+
+.accsesBlockInfo span{
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 16px;
+}
+
+.Social{
+    display: flex;
+    align-items: flex-end;
+}
+
+.Social a{
+    display: inline-block;
+    color: #434343;
+    margin: 15px 0px 0px 15px;
+}
+
+:root{
+    --font-size-main: 2rem !important;
+}
+
+.Social .facebookIcon {
+    font-size: var(--font-size-main)
+}
+
+.Social .telegramIcon {
+    font-size: var(--font-size-main)
+}
+
+.Social .instagramIcon{
+    font-size: var(--font-size-main)
+}
+
+.Social .youtubeIcon{
+    font-size: var(--font-size-main);
+}
+
+.facebookIcon:hover {
+    color: #0266a9;
+}
+
+.telegramIcon:hover{
+    color: #28a4e4;
+}
+
+.instagramIcon:hover{
+    color: #df3178;
+}
+
+.youtubeIcon:hover{
+    color: red;
+}
