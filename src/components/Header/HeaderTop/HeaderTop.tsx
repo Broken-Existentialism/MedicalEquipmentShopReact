@@ -4,10 +4,25 @@ import {Link} from "react-router-dom";
 import logo from '../../../assets/images/logo1.png'
 import SearchIcon from '@mui/icons-material/Search';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import AddShoppingCartOutlinedIcon from '@mui/icons-material/AddShoppingCartOutlined';
 import { CART_ROUTE, FAVOURITES_ROUTE, MAIN_ROUTE } from '../../../utils/consts';
 import { Container } from '@mui/system';
+import Badge, { BadgeProps } from '@mui/material/Badge';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
+
+const StyledBadge = styled(Badge)<BadgeProps>({
+  '& .MuiBadge-badge': {
+    right: -3,
+    top: 13,
+    border: '2px solid #fff',
+    padding: '0 4px',
+    backgroundColor: '#A4C9FF',
+    color: '#fff',
+  },
+});
 
 const HeaderTop = (props: any) =>{
     return(
@@ -29,22 +44,34 @@ const HeaderTop = (props: any) =>{
                                 </form>
                         </div>
                         <div className={s.headerElements}>
+
                                 <div className={s.cart}>
                                     <Link to={CART_ROUTE}>
-                                        <AddShoppingCartOutlinedIcon className={s.iconStyle} />
+                                        <IconButton aria-label="cart">
+                                            <StyledBadge badgeContent={4} >
+                                                <ShoppingCartIcon className={s.iconStyle} />
+                                            </StyledBadge>
+                                        </IconButton>
                                     </Link>
-                                    <span>0</span>
                                 </div>
+
                                 <div className={s.favourites}>
                                     <Link to={FAVOURITES_ROUTE}>
-                                        <FavoriteBorderIcon className={s.iconStyle} />
+                                       <IconButton aria-label="favourites">
+                                            <StyledBadge badgeContent={4}>
+                                                <FavoriteIcon className={s.iconStyle} />
+                                            </StyledBadge>
+                                        </IconButton>
                                     </Link>
-                                    <span>0</span>
                                 </div>
+
                                 <div className={s.login}>
-                                    <LoginOutlinedIcon className={s.iconStyle}/>
+                                     <IconButton aria-label="login">
+                                        <LoginOutlinedIcon className={s.iconStyle}/>
+                                    </IconButton>
                                 </div>
                         </div>
+                        
                     </div>
 
                 </div>

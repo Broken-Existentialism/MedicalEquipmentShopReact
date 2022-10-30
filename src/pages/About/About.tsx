@@ -1,84 +1,113 @@
-import { Container } from '@mui/system'
-import React from 'react';
-import { useState, useEffect, useRef } from "react"
-import s from './About.module.css'
+import { useForm, Controller } from "react-hook-form";
+import TextField from "@mui/material/TextField";
+import Grid from "@mui/material/Grid";
+import Button from "@mui/material/Button";
+import { styled } from '@mui/system';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+import { Container } from "@mui/material";
+import { postNewEquipment } from "../../api/api";
 
-const About = () =>{
-    /*
-    const [numbers, setNumbers] = useState([1, 2 ,3 ,4 ,5, 6])
+const schema = yup.object({
+  name: yup.string().required().min(3).max(200),
+  year: yup.number().required().positive(),
+  price: yup.number().required().positive(),
+  brandId: yup.number().required().positive(),
+  typeId: yup.number().required().positive(),
+}).required();
 
-    const ulRef: any = useRef(null)
-    //console.log(ulRef)
+const StyledTextField = styled(TextField) ({
+  backgroundColor: "white",
+  padding: 0.1,
+  width: "100%",
+  borderRadius: 10,
+  '& p':{
+    color:'rgb(255, 108, 50)',
+  },
+  '& .MuiFormLabel-root' : {
+    color: 'black',
+    
+  },
+});
 
-    const addNumbers = () =>{
-        const lastNumbers = numbers[numbers.length - 1]
-        setNumbers([...numbers, lastNumbers + 1])
-    }
+const About = () => {
 
-    const HandleScrol = () =>{
-        console.log("Был скрол")
-    }
+  const { control, handleSubmit, formState:{ errors } } = useForm({
+    defaultValues: {
+      name: '',
+      year: 0,
+      price: 0,
+      brandId: 0,
+      typeId: 0,
+      img: '',
+    },
+    resolver: yupResolver(schema),
+  });
 
-    //let ulElem: any;
+  const onSubmit = async (data : any) => {
+      let res = await postNewEquipment(data)
+      console.log(res.data)
+  }
 
-    useEffect(()=>{
-        ulRef.current.addEventListener('scroll', HandleScrol)
-    }, [])
+  return (
+    <Container>
+      <form autoComplete="off" onSubmit={handleSubmit(onSubmit)}>
+        <Grid container spacing={2} direction="row" justifyContent="center" alignItems="flex-start">
+          <Grid item xs={6}>
+          <Controller
+          name="name"
+          control={control}
+          render={({ field }) => <StyledTextField  label="Name" helperText={errors?.name && String(errors.name.message)} placeholder="Name" variant="filled" type="text" {...field} />}
+          />
+          </Grid>
 
-    const RemoveScrol = () =>{
-        ulRef.current.removeEventListener('scroll', HandleScrol)
-        console.log("remove")
-        console.log(ulRef.current)
-    }
+          <Grid item xs={6}>
+          <Controller
+            name="year"
+            control={control}
+            render={({ field }) => <StyledTextField label="Year" helperText={errors?.year && String(errors.year.message)} placeholder="Year" variant="filled" type="text" {...field} />}
+          />
+          </Grid>
 
-    return(
-        <Container>
-            <div className={s.mainBlock}>
-                <ul ref = {ulRef} className={s.block} >
-                    {
-                        numbers.map((item, index) => <li key={index}>{item}</li>)
-                    }
-                </ul>
-                <button onClick={addNumbers}>Добавить число</button>
-                <button onClick={RemoveScrol}>Не следить</button>
-            </div>
-        </Container>
-    )
-    */
+          <Grid item xs={6}>
+          <Controller
+            name="price"
+            control={control}
+            render={({ field }) => <StyledTextField label="Price" helperText={errors?.price && String(errors.price.message)} placeholder="Price" variant="filled" multiline={true} type="text" {...field} />}
+          />
+          </Grid>
 
-    const [numbers, setNumbers] = React.useState([1, 2, 3, 4, 5]);
+          <Grid item xs={6}>
+          <Controller
+            name="brandId"
+            control={control}
+            render={({ field }) => <StyledTextField label="Brand Id" helperText={errors?.brandId && String(errors.brandId.message)} placeholder="Brand Id" variant="filled" multiline={true} type="number" {...field} />}
+          />
+          </Grid>
 
-    const timerRef:any = React.useRef();
+          <Grid item xs={6}>
+          <Controller
+            name="typeId"
+            control={control}
+            render={({ field }) => <StyledTextField label="Type Id" helperText={errors?.typeId && String(errors.typeId.message)} placeholder="Type Id" variant="filled" multiline={true} type="number" {...field} />}
+          />
+          </Grid>
 
-    const addNumber = () => {
-        setNumbers((prev) => [...prev, prev[prev.length - 1] + 1]);
-    };
+          <Grid item xs={6}>
+          <Controller
+            name="img"
+            control={control}
+            render={({ field }) => <StyledTextField label="Img"  helperText={errors?.img && String(errors.img.message)} placeholder="Img" variant="filled" type="file" {...field} />}
+          />
+          </Grid>
 
-    const start = () => {
-        timerRef.current = setInterval(addNumber, 1000);
-    };
-
-    const stop = () => {
-        
-        console.log(timerRef.current);
-
-        clearInterval(timerRef.current);
-    };
-
-    return (
-        <Container>
-            <div>
-                <ul className={s.block}>
-                    {numbers.map((n) => (
-                    <li key={n}>{n}</li>
-                    ))}
-                </ul>
-                <button onClick={addNumber}>✅ Добавить число</button>
-                <button onClick={start}>▶️ Старт</button>
-                <button onClick={stop}>⏹ Стоп</button>
-            </div>
-        </Container>
-    );
-}
+          <Grid item xs={6}>
+            <Button type="submit" variant="contained">Submit</Button>
+          </Grid>
+        </Grid>
+      </form>
+    </Container>
+  );
+};
 
 export default About

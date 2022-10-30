@@ -9,7 +9,7 @@ export interface IEquipmentItem{
     Name: string,
     Year: number,
     Price: number,
-    Brand: string,
-    Type: string,
+    Brand: string | null,
+    Type: string | null,
     Img: string | null,
 }

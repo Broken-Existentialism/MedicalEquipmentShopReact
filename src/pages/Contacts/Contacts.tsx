@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Button, Paper } from '@mui/material'
 
-export const Contacts = () => {
+const Contacts = () => {
   const [textValue, setTextValue] = useState<string>("");
 
   const onTextChange = (e: any) => setTextValue(e.target.value);

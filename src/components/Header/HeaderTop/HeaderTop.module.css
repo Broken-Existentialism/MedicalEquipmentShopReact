@@ -66,6 +66,7 @@
     justify-content: space-between;
 }
 
+/*
 .headerElements span{
     position: absolute;
     min-width: 16px;
@@ -90,6 +91,7 @@
 .favourites{
     position: relative;
 }
+*/
 
 .iconStyle {
     color: #434343;
