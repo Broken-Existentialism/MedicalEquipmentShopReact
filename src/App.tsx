@@ -40,11 +40,11 @@ function App() {
     fetchData()
   },[])
 
-  /*
+  
   const {data, loading, error} = useFetchData('https://localhost:7201/api/MedicalEquipments?PageIndex=1&PageSize=20')
   console.log(data)
   console.log(loading)
-  */
+  
   return (
     <div className={s.App}>
       <CatalogItemsContext.Provider value={catalogItems} >

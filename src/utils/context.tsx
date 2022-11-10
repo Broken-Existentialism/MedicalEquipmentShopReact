@@ -1,5 +1,5 @@
 import { ICatalogItem } from "../types/types";
-import { CATALOG_ROUTE } from "./consts";
+import { CATALOG_ROUTE, CATALOG_ROUTE_NESTED } from "./consts";
 
 import LaboratoryIcon from '../assets/images/catalog/laboratory.png'
 import AmbulanceIcon from '../assets/images/catalog/ambulance.png'
@@ -17,7 +17,7 @@ export const catalogItems: ICatalogItem[] = [
     {
         title: 'Laboratory',
         icon: LaboratoryIcon,
-        path: CATALOG_ROUTE,
+        path: CATALOG_ROUTE_NESTED + 'Laboratory',
     },
     {
         title: 'Ambulance',

@@ -1,7 +1,7 @@
 import s from './HeaderTop.module.css'
 import {Link} from "react-router-dom";
 
-import logo from '../../../assets/images/logo1.png'
+import logo from '../../../assets/images/MainLogo.png'
 import SearchIcon from '@mui/icons-material/Search';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import { CART_ROUTE, FAVOURITES_ROUTE, MAIN_ROUTE } from '../../../utils/consts';
