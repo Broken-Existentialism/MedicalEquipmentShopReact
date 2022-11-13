@@ -1,6 +1,14 @@
 import axios from 'axios';
 import { IEquipmentItem } from '../types/types';
 
+export const createInstance = (url: string) =>{
+    return axios.create(
+        {
+            baseURL: `https://localhost:7201/` + url,
+        }
+    )
+}
+
 const instance = axios.create(
     {
         baseURL: `https://localhost:7201/api/MedicalEquipments/`,
@@ -27,4 +35,3 @@ export const deleteEquipmentById = async(id: number) =>{
     return result
 }
 
-export {}

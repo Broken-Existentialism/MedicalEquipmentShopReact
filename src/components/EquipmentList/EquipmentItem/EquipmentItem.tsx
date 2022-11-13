@@ -13,8 +13,7 @@ const EquipmentItem = ({Id, Name, Year, Price, Brand, Type, Img}:IEquipmentItem)
                 <Box className={s.imageBlock}>
                     <img src={imageTestSecond} alt='Error'/>
                 </Box>
-                <div></div>
-                
+
                 <Box
                     sx={{
                         background: "blue",
