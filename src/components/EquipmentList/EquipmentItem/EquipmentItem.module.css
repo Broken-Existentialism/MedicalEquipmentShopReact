@@ -2,11 +2,10 @@
     background-color: white;
     padding: 20px 15px;
     height: 500px;
-    border: 1px solid green;
+    border: 1px solid rgb(232, 232, 232);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /*border-radius: 10px;*/
     transition: all 0.05s linear;
 }
 
@@ -16,7 +15,6 @@
 }
 
 .imageBlock{
-    background-color: red;
     height: 40%;
 }
 
@@ -25,3 +23,60 @@
     height: 100%;
     object-fit: scale-down;
 }
+
+.generalFontStyle{
+    font-size: 15px;
+    margin-top: 8px;
+    font-weight: bold;
+    color: #898989;
+}
+
+.equipmentId{
+    font-size: 13px;
+    font-weight: 300;
+}
+
+.equipmentDescription{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+.equipmentType {
+}
+
+.equipmentBrand{
+    color: #A4C9FF;
+}
+
+.equipmentName{
+    color: #3550aa;
+}
+
+.equipmentPrice{
+    color: #d96857;
+}
+
+.cartAndFavorites{
+    height: 10%;
+    margin: 10px 0px 0px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.cartAndFavorites .cartBtn{
+    font-size: 14px  !important;
+    background-color: #d96857 !important;
+}
+
+.cartAndFavorites .cartBtn span{
+    padding-right: 5px;
+}
+

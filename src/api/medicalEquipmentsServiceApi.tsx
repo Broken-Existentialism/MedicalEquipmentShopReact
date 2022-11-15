@@ -1,4 +1,4 @@
-import { IMedicalEquipmentRequest, IMedicalEquipmentType } from "../types/medicalEquipments";
+import { IMedicalEquipmentRequest, IMedicalEquipmentResponce, IMedicalEquipmentType } from "../types/medicalEquipments";
 import { createInstance } from "./api";
 
 const instance =  createInstance('api/MedicalEquipments')
@@ -9,7 +9,7 @@ export const getMedicalEquipmentById = async (id: number) =>{
 }
 
 export const getAllMedicalEquipments = async (request: IMedicalEquipmentRequest) =>{
-    const result = await instance.get<Array<IMedicalEquipmentType>>('', { params: {
+    const result = await instance.get<IMedicalEquipmentResponce>('', { params: {
         pageIndex: request.pageIndex,
         pageSize: request.pageSize,
         columnNameForSorting: request.columnNameForSorting,

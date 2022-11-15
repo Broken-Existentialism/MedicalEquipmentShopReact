@@ -5,31 +5,12 @@ import Navigation from './components/Navigation/Navigation';
 
 import { useEffect} from "react"
 import { catalogItems, CatalogItemsContext } from './utils/context';
-import { getEquipmentById } from './api/api';
-import { getAllMedicalEquipments } from './api/medicalEquipmentsServiceApi';
+import { useTypeSelector } from './hooks/useTypeSelector';
+import { useActions } from './hooks/useActions';
 
 
 function App() {
-  useEffect(()=>{
-    
-    const fetchData = async () =>{
-      
-      var result = await getAllMedicalEquipments({
-        pageIndex: 1,
-        pageSize: 20,
-        columnNameForSorting: null,
-        sortDirection: null,
-        requestFilters: {
-          name: null,
-          typeName: null,
-          brandTitle: null,
-        }
-      })
-      console.log(result.data)
-      
-    }
-    fetchData()
-  },[])
+
 
   return (
     <div className={s.App}>

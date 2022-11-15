@@ -1,92 +1,64 @@
-import { Grid } from '@mui/material'
-import { IEquipmentItem } from '../../types/types'
+import { Box, CircularProgress, Grid, Pagination } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { useActions } from '../../hooks/useActions'
+import { useTypeSelector } from '../../hooks/useTypeSelector'
 import EquipmentItem from './EquipmentItem/EquipmentItem'
 
-
-const equipmentItems: IEquipmentItem[] = [
-    {
-        Id: 1,
-        Name: "SomeName",
-        Year: 2018,
-        Price: 230000,
-        Brand: "SomeBrand",
-        Type: "SomeType",
-        Img: "SomeImg",
-    },
-    {
-        Id: 1,
-        Name: "SomeName",
-        Year: 2018,
-        Price: 230000,
-        Brand: "SomeBrand",
-        Type: "SomeType",
-        Img: "SomeImg",
-    },
-    {
-        Id: 1,
-        Name: "SomeName",
-        Year: 2018,
-        Price: 230000,
-        Brand: "SomeBrand",
-        Type: "SomeType",
-        Img: "SomeImg",
-    },
-    {
-        Id: 1,
-        Name: "SomeName",
-        Year: 2018,
-        Price: 230000,
-        Brand: "SomeBrand",
-        Type: "SomeType",
-        Img: "SomeImg",
-    },
-    {
-        Id: 1,
-        Name: "SomeName",
-        Year: 2018,
-        Price: 230000,
-        Brand: "SomeBrand",
-        Type: "SomeType",
-        Img: "SomeImg",
-    },
-    {
-        Id: 1,
-        Name: "SomeName",
-        Year: 2018,
-        Price: 230000,
-        Brand: "SomeBrand",
-        Type: "SomeType",
-        Img: "SomeImg",
-    },
-    {
-        Id: 1,
-        Name: "SomeName",
-        Year: 2018,
-        Price: 230000,
-        Brand: "SomeBrand",
-        Type: "SomeType",
-        Img: "SomeImg",
-    },
-]
-
 const EquipmentList = () =>{
+
+    const [page, setPage] = useState(1);
+    const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+    };
+
+    const medicalEquipmentsState = useTypeSelector(state => state.medicalEquipments)
+    const {fetchMedicalEquipments} = useActions()
+    
+    useEffect(()=>{
+      const fetchData = async () =>{
+        fetchMedicalEquipments({
+          pageIndex: page,
+          pageSize: 3,
+          columnNameForSorting: '',
+          sortDirection: '',
+          requestFilters: {
+            name: '',
+            brandTitle: '',
+            typeName: ''
+          }
+        })
+  
+      }
+      fetchData()
+    },[page])
+
     return(
-        <Grid container spacing={1.5}>
-           {
-                equipmentItems.map((item, index) => 
-                    <EquipmentItem 
-                        key={index} 
-                        Id={item.Id}
-                        Name={item.Name}
-                        Year={item.Year}
-                        Price={item.Price}
-                        Brand={item.Brand}
-                        Type={item.Type}
-                        Img={item.Img}
-                        />)
-           }
-        </Grid>
+      <Box sx={{display: 'flex', alignItems:'center', flexDirection:'column', minHeight:'100%'}}>
+        {
+            medicalEquipmentsState.loading 
+            ? <Box sx={{flex: '1 1 auto' , display:'flex', alignItems:'center', justifyContent:'center',}}>
+                <CircularProgress sx={{color:'#A4C9FF'}}/>
+              </Box>
+            : <Grid container rowSpacing={3} columnSpacing={3} >
+                {
+                  medicalEquipmentsState.items.map((item, index) => 
+                          <EquipmentItem 
+                              key={index} 
+                              id={item.id}
+                              name={item.name}
+                              year={item.year}
+                              price={item.price}
+                              brand={item.brand}
+                              equipmnetType={item.equipmnetType}
+                              img={item.img}/>)
+                }
+               </Grid>
+        }
+        <Pagination count={Math.ceil(medicalEquipmentsState.total / medicalEquipmentsState.pageSize)} page={page} onChange={handleChange} size="large" sx={{margin:'10px 0px 10px 0px'}}/>
+      </Box>
     )
 }
 
 export default EquipmentList
+
+

@@ -1,11 +1,11 @@
 export interface IMedicalEquipmentType{
-    Id: number,
-    Name: string,
-    Year: number,
-    Price: number,
-    Brand: string | null,
-    Type: string | null,
-    Img: string | null,
+    id: number,
+    name: string,
+    year: number,
+    price: number,
+    brand: string | null,
+    equipmnetType: string | null,
+    img: string | null,
 }
 
 export interface IMedicalEquipmentRequest{
@@ -14,6 +14,13 @@ export interface IMedicalEquipmentRequest{
     columnNameForSorting: string | null,
     sortDirection: string | null,
     requestFilters: IRequestFilters | null,
+}
+
+export interface IMedicalEquipmentResponce{
+    pageIndex: number,
+    pageSize: number,
+    total: number,
+    items: IMedicalEquipmentType[],
 }
 
 interface IRequestFilters{
