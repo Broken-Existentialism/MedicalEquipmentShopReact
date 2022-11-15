@@ -1,8 +1,8 @@
 import { IMedicalEquipmentState, MedicalEquipmentAction, MedicalEquipmentsActionTypes } from "../types/medicalEquipmentTypes"
 
 const initialState: IMedicalEquipmentState = {
-    pageIndex: 0,
-    pageSize: 0,
+    pageIndex: 1,
+    pageSize: 3,
     total: 0,
     items: [],
     loading: false,

@@ -24,7 +24,7 @@ export interface IMedicalEquipmentResponce{
 }
 
 interface IRequestFilters{
-    name: string | null,
-    brandTitle: string | null,
-    typeName: string | null,
+    name: string | null | undefined,
+    brandTitle: string | null | undefined,
+    typeName: string | null | undefined
 }
