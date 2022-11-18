@@ -1,14 +1,10 @@
-import axios from "axios"
-import { IUserProfileType } from "../types/userProfile"
+import { IUserProfileResponce } from "../types/userProfile"
+import { createInstance } from "./api"
 
-const instance = axios.create(
-    {
-        baseURL: `https://localhost:7201/api/UserProfile/`,
-    }
-)
+const instance =  createInstance('api/UserProfile')
 
-export const getUserById = async (id: string) =>{
-    var result = await instance.get<IUserProfileType>(`${id}`)
+export const getUserById = async (id: string | null) =>{
+    let result = await instance.get<IUserProfileResponce>(`${id}`)
     return result
 }
 

@@ -1,8 +1,10 @@
+import { Container } from "@mui/material"
+
 const NotFound = () =>{
     return(
-        <div>
-            NotFound
-        </div>
+        <Container>
+            <h1>NotFound</h1>
+        </Container>
     )
 }
 

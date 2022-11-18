@@ -4,7 +4,8 @@ import Catalog from "../pages/Catalog/Catalog";
 import Contacts from "../pages/Contacts/Contacts";
 import MainPage from "../pages/Main/Main";
 import NotFound from "../pages/NotFound/NotFound";
-import { ABOUT_ROUTE, CATALOG_ROUTE, CONTACTS_ROUTE, MAIN_ROUTE, NOTFOUND_ROUTE } from "../utils/consts";
+import Register from "../pages/Register/Register";
+import { ABOUT_ROUTE, CATALOG_ROUTE, CONTACTS_ROUTE, MAIN_ROUTE, NOTFOUND_ROUTE, REGISTER_ROUTE } from "../utils/consts";
 
 interface IRoute{
     path: string;
@@ -27,6 +28,10 @@ export const authRoutes: IRoute[] = [
     {
         path: CONTACTS_ROUTE,
         component: <Contacts />,
+    },
+    {
+        path: REGISTER_ROUTE,
+        component: <Register />
     },
     {
         path: NOTFOUND_ROUTE,

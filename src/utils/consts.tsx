@@ -9,6 +9,7 @@ export const SELL_ROUTE: string = '/sell'
 export const PARTNERS_ROUTE: string = '/partners'
 export const DELIVERY_ROUTE: string = '/delivery'
 export const CONTACTS_ROUTE: string = '/contacts'
+export const REGISTER_ROUTE: string = '/register'
 export const NOTFOUND_ROUTE: string = '*'
 
 export const FACEBOOK_ROUTE: string = 'https://www.facebook.com/'

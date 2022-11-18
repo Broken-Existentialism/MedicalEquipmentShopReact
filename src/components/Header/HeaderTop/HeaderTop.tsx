@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 
 import logo from '../../../assets/images/MainLogo.png'
 import SearchIcon from '@mui/icons-material/Search';
-import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
 import { CART_ROUTE, FAVOURITES_ROUTE, MAIN_ROUTE } from '../../../utils/consts';
 import { Container } from '@mui/system';
 import Badge, { BadgeProps } from '@mui/material/Badge';
@@ -11,7 +10,11 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
+import { useTypeSelector } from '../../../hooks/useTypeSelector';
+import { useEffect, useState } from 'react';
+import SignInModal from '../../Modal/Modal';
+import { getUserById } from '../../../api/userServiceApi';
+import { useActions } from '../../../hooks/useActions';
 
 const StyledBadge = styled(Badge)<BadgeProps>({
   '& .MuiBadge-badge': {
@@ -25,6 +28,21 @@ const StyledBadge = styled(Badge)<BadgeProps>({
 });
 
 const HeaderTop = (props: any) =>{
+
+    const {shopCartItemsQuantity, favoriteItemsQuantity} = useTypeSelector(state => state.userProfile)
+    const {fetchUserProfile} = useActions()
+
+    useEffect(()=>{
+        const fetchData = async () =>{
+            let userId: string | null = localStorage.getItem('userId')
+            if(userId)
+            {
+                fetchUserProfile(userId, true)
+            }
+        }   
+        fetchData()
+      }, [])
+
     return(
         <div className={s.headerTop}>
             <Container> 
@@ -48,7 +66,7 @@ const HeaderTop = (props: any) =>{
                                 <div className={s.cart}>
                                     <Link to={CART_ROUTE}>
                                         <IconButton aria-label="cart">
-                                            <StyledBadge badgeContent={4} >
+                                            <StyledBadge badgeContent={shopCartItemsQuantity} >
                                                 <ShoppingCartIcon className={s.iconStyle} />
                                             </StyledBadge>
                                         </IconButton>
@@ -58,18 +76,18 @@ const HeaderTop = (props: any) =>{
                                 <div className={s.favourites}>
                                     <Link to={FAVOURITES_ROUTE}>
                                        <IconButton aria-label="favourites">
-                                            <StyledBadge badgeContent={4}>
+                                            <StyledBadge badgeContent={favoriteItemsQuantity}>
                                                 <FavoriteIcon className={s.iconStyle} />
                                             </StyledBadge>
                                         </IconButton>
                                     </Link>
                                 </div>
 
-                                <div className={s.login}>
-                                     <IconButton aria-label="login">
-                                        <LoginOutlinedIcon className={s.iconStyle}/>
-                                    </IconButton>
-                                </div>
+                                {
+                                    <div className={s.login}>
+                                         <SignInModal />
+                                    </div>  
+                                }
                         </div>
                         
                     </div>

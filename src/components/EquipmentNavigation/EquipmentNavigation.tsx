@@ -4,14 +4,14 @@ import { getAllEquipmentTypes } from "../../api/equipmentTypeServiceApi";
 import { IBrandType } from "../../types/brand";
 import { IEquipmentType } from "../../types/equipmentType";
 import SelectComponent from "../Select/Select"
-  
+
 const EquipmentNavigation = ({setColumnNameForSorting, setSortDirection, setFilterType, setFilterBrand}: any) =>{
 
     const [brands, setBrands] = useState<IBrandType[]>([])
     const [equipmentTypes, setequipmentTypes] = useState<IEquipmentType[]>([])
 
-    const columnNameForSorting = ['Price', 'Year']
-    const sortingValue = [ 'Ascending', 'Descending']
+    const columnNameForSorting: string[] = ['Price', 'Year']
+    const sortingValue: string[] = [ 'Ascending', 'Descending']
 
     useEffect(()=>{
         const fetchData = async () =>{
@@ -23,13 +23,13 @@ const EquipmentNavigation = ({setColumnNameForSorting, setSortDirection, setFilt
         }
         fetchData()
       },[])
-      
+
     return(
        <div>
-            <SelectComponent items={sortingValue} name={'Sorting'} handleChangeProps={setSortDirection}/>
-            <SelectComponent items={columnNameForSorting} name={'Column Name For Sorting'} handleChangeProps={setColumnNameForSorting}/>
-            <SelectComponent items={equipmentTypes.map(item => item.name)} name={'Equipment Types'} handleChangeProps={setFilterType}/>
-            <SelectComponent items={brands.map(item => item.title)} name={'Brands'} handleChangeProps={setFilterBrand}/>
+            <SelectComponent items={sortingValue} name={'Sorting direction'} handleChangeProps={setSortDirection}/>
+            <SelectComponent items={columnNameForSorting} name={'Sorting criteria'} handleChangeProps={setColumnNameForSorting}/>
+            <SelectComponent items={equipmentTypes.map(item => item.name)} name={'Equipment types'} handleChangeProps={setFilterType}/>
+            <SelectComponent items={brands.map(item => item.title)} name={'Equipment brands'} handleChangeProps={setFilterBrand}/>
        </div>
     )
 }

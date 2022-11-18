@@ -6,7 +6,7 @@ import { styled } from '@mui/system';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { Container } from "@mui/material";
-import { postNewEquipment } from "../../api/api";
+
 
 const schema = yup.object({
   name: yup.string().required().min(3).max(200),
@@ -45,8 +45,8 @@ const About = () => {
   });
 
   const onSubmit = async (data : any) => {
-      let res = await postNewEquipment(data)
-      console.log(res.data)
+   
+      console.log(data)
   }
 
   return (

@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux"
 import { bindActionCreators } from "redux"
-import * as MedicalEquipmentActionCreators from '../redux/action-creators/medicalEquipmentActions'
+import ActionCreators from '../redux/action-creators'
 
 export const useActions = () =>{
     const dispatch = useDispatch()
-    return bindActionCreators(MedicalEquipmentActionCreators, dispatch)
+    return bindActionCreators(ActionCreators, dispatch)
 }
 
 export {}

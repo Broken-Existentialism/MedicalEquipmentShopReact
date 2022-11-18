@@ -3,6 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { Box } from '@mui/material';
 
 interface ISelectProps{
   name: string,
@@ -21,7 +22,7 @@ export default function SelectComponent({items, name, handleChangeProps}:ISelect
   };
 
   return (
-    <div>
+    <Box sx={{marginBottom:'20px'}}>
       <FormControl variant="standard" sx={{ width: '100%' }}>
         <InputLabel>{name}</InputLabel>
         <Select
@@ -38,6 +39,6 @@ export default function SelectComponent({items, name, handleChangeProps}:ISelect
 
         </Select>
       </FormControl>
-    </div>
+    </Box>
   );
 }
