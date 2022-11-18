@@ -3,7 +3,8 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import { IconButton } from '@mui/material';
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined';
-import SingIn from '../SingIn/SingIn';
+import GppGoodIcon from '@mui/icons-material/GppGood';
+import SignIn from '../SignIn/SingIn';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -16,7 +17,12 @@ const style = {
   p: 4,
 };
 
-export default function SignInModal() {
+interface IProfileModal{
+  isAuth: boolean
+}
+
+export default function ProfileModal({isAuth}:IProfileModal) {
+
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -34,7 +40,12 @@ export default function SignInModal() {
       >
         <Box sx={style}>
         {
-          <SingIn onCloseModal={handleClose} />
+          isAuth
+          ? <Box sx={{display:'flex', alignItems: 'center', justifyContent: 'center'}}>
+               <GppGoodIcon fontSize='large' sx={{color: 'green'}}/>
+               <Box component="span" sx={{fontSize:'18px'}}>The user is logged in</Box>
+            </Box>
+          : <SignIn onCloseModal={handleClose} />
         }
         </Box>
       </Modal>

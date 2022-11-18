@@ -17,6 +17,7 @@ export enum UserProfileActionTypes {
     FETCH_USER_PROFILE = 'FETCH_USER_PROFILE',
     FETCH_USER_PROFILE_SUCCESS = 'FETCH_USER_PROFILE_SUCCESS',
     FETCH_USER_PROFILE_ERROR = 'FETCH_USER_PROFILE_ERROR',
+    SET_DEFAULT_USER_PROFILE = 'SET_DEFAULT_USER_PROFILE',
 }
 
 interface FetchUserProfileAction {
@@ -31,4 +32,13 @@ interface FetchUserProfileErrorAction {
     payload: string;
 }
 
-export type UserProfileAction = FetchUserProfileAction | FetchUserProfileSuccessAction | FetchUserProfileErrorAction
+interface SetUserProfileDefault {
+    type: UserProfileActionTypes.SET_DEFAULT_USER_PROFILE
+    payload: IUserProfileResponce
+}
+
+export type UserProfileAction = 
+    FetchUserProfileAction | 
+    FetchUserProfileSuccessAction | 
+    FetchUserProfileErrorAction | 
+    SetUserProfileDefault

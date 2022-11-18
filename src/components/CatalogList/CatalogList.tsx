@@ -1,10 +1,6 @@
 import s from './CatalogList.module.css'
 import CatalogListItem from './CatalogListItem/CatalogListItem'
 import { Container } from '@mui/system'
-import { useContext } from 'react'
-import { CatalogItemsContext } from '../../utils/context'
-
-/*
 import { ICatalogItem } from '../../types/types'
 import { CATALOG_ROUTE } from '../../utils/consts'
 import LaboratoryIcon from '../../assets/images/catalog/laboratory.png'
@@ -17,9 +13,7 @@ import SurgeryIcon from '../../assets/images/catalog/surgery.png'
 import DiagnosticsIcon from '../../assets/images/catalog/diagnostics.png'
 import OphthalmologyIcon from '../../assets/images/catalog/ophthalmology.png'
 import TomographyIcon from '../../assets/images/catalog/tomography.png'
-*/
 
-/*
 const catalogItems: ICatalogItem[] = [
     {
         title: 'Laboratory',
@@ -72,17 +66,14 @@ const catalogItems: ICatalogItem[] = [
         path: CATALOG_ROUTE,
     },
 ]
-*/
 
 const CatalogList = () =>{
-
-    const items = useContext(CatalogItemsContext)
 
     return (
         <Container>
             <div className={s.catalogGrid}>
                 {
-                    items.map((item, index)=> <CatalogListItem title={item.title} icon={item.icon} path={item.path} key={index}/>)
+                    catalogItems.map((item, index)=> <CatalogListItem title={item.title} icon={item.icon} path={item.path} key={index}/>)
                 }
             </div>
         </Container>

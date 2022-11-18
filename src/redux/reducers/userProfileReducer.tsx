@@ -35,6 +35,11 @@ const userProfileReducer = (state = initialState, action: UserProfileAction) =>{
                 loading: false,
                 error: action.payload,
             }
+        case UserProfileActionTypes.SET_DEFAULT_USER_PROFILE:
+            return{
+                ...state,
+                ...action.payload,
+            }
         default:
             return state
     }

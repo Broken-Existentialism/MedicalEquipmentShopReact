@@ -11,10 +11,12 @@ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useTypeSelector } from '../../../hooks/useTypeSelector';
-import { useEffect, useState } from 'react';
-import SignInModal from '../../Modal/Modal';
-import { getUserById } from '../../../api/userServiceApi';
+import { useEffect} from 'react';
 import { useActions } from '../../../hooks/useActions';
+import ProfileModal from '../../Modal/Modal';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { logout } from '../../../api/authentificationServiceApi';
+import { SingOut } from '../../SignOut/SignOut';
 
 const StyledBadge = styled(Badge)<BadgeProps>({
   '& .MuiBadge-badge': {
@@ -29,7 +31,8 @@ const StyledBadge = styled(Badge)<BadgeProps>({
 
 const HeaderTop = (props: any) =>{
 
-    const {shopCartItemsQuantity, favoriteItemsQuantity} = useTypeSelector(state => state.userProfile)
+    const {shopCartItemsQuantity, favoriteItemsQuantity, isAuth} = useTypeSelector(state => state.userProfile)
+
     const {fetchUserProfile} = useActions()
 
     useEffect(()=>{
@@ -42,56 +45,49 @@ const HeaderTop = (props: any) =>{
         }   
         fetchData()
       }, [])
-
+      
     return(
         <div className={s.headerTop}>
             <Container> 
                 <div className={s.headerTopBlock}>
-
                     <Link to={MAIN_ROUTE} className={s.headerLogo} >
-                            <img className={s.logoImage} src={logo} alt="Error"/>
+                        <img className={s.logoImage} src={logo} alt="Error"/>
                     </Link>  
-
                     <div className={s.headerMain}>
                         <div className={s.headerSearch}>
-                                <form className={s.formBlock}>
-                                    <input type="text" placeholder="TYPE YOUR QUERY..." />
-                                    <button type="submit">
-                                        <SearchIcon sx={{ color: 'white', fontSize: 40 }} />
-                                    </button>
-                                </form>
+                            <form className={s.formBlock}>
+                                <input type="text" placeholder="TYPE YOUR QUERY..." />
+                                <button type="submit">
+                                    <SearchIcon sx={{ color: 'white', fontSize: 40 }} />
+                                </button>
+                            </form>
                         </div>
                         <div className={s.headerElements}>
-
-                                <div className={s.cart}>
-                                    <Link to={CART_ROUTE}>
-                                        <IconButton aria-label="cart">
-                                            <StyledBadge badgeContent={shopCartItemsQuantity} >
-                                                <ShoppingCartIcon className={s.iconStyle} />
-                                            </StyledBadge>
-                                        </IconButton>
-                                    </Link>
-                                </div>
-
-                                <div className={s.favourites}>
-                                    <Link to={FAVOURITES_ROUTE}>
-                                       <IconButton aria-label="favourites">
-                                            <StyledBadge badgeContent={favoriteItemsQuantity}>
-                                                <FavoriteIcon className={s.iconStyle} />
-                                            </StyledBadge>
-                                        </IconButton>
-                                    </Link>
-                                </div>
-
-                                {
-                                    <div className={s.login}>
-                                         <SignInModal />
-                                    </div>  
-                                }
+                            <div className={s.cart}>
+                                <Link to={CART_ROUTE}>
+                                    <IconButton aria-label="cart">
+                                        <StyledBadge badgeContent={shopCartItemsQuantity} >
+                                            <ShoppingCartIcon className={s.iconStyle} />
+                                        </StyledBadge>
+                                    </IconButton>
+                                </Link>
+                            </div>
+                            <div className={s.favourites}>
+                                <Link to={FAVOURITES_ROUTE}>
+                                    <IconButton aria-label="favourites">
+                                        <StyledBadge badgeContent={favoriteItemsQuantity}>
+                                            <FavoriteIcon className={s.iconStyle} />
+                                        </StyledBadge>
+                                    </IconButton>
+                                </Link>
+                            </div>
+                            {
+                                isAuth
+                                ? <SingOut />
+                                : <ProfileModal isAuth={isAuth}/> 
+                            }
                         </div>
-                        
                     </div>
-
                 </div>
            </Container>
         </div>
