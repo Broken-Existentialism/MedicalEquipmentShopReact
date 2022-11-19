@@ -4,5 +4,9 @@ export interface IShopCartEquipment{
     year: number,
     price: number,
     quantity: number,
-    img: number | null,
+    img: string | null,
+}
+
+export interface IShopCartResponce{
+    items: IShopCartEquipment[]
 }

@@ -22,11 +22,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 8%;
+    margin-left: 5%;
 }
 
 .headerSearch{
-    width: 70%;
+    width: 60%;
 }
 
 .formBlock{
@@ -61,9 +61,10 @@
 }
 
 .headerElements{
-    width: 200px;
+    width: 30%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 /*

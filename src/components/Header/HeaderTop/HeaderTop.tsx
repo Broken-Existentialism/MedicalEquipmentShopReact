@@ -14,9 +14,7 @@ import { useTypeSelector } from '../../../hooks/useTypeSelector';
 import { useEffect} from 'react';
 import { useActions } from '../../../hooks/useActions';
 import ProfileModal from '../../Modal/Modal';
-import LogoutIcon from '@mui/icons-material/Logout';
-import { logout } from '../../../api/authentificationServiceApi';
-import { SingOut } from '../../SignOut/SignOut';
+import { SignOut } from '../../SignOut/SignOut';
 
 const StyledBadge = styled(Badge)<BadgeProps>({
   '& .MuiBadge-badge': {
@@ -31,7 +29,9 @@ const StyledBadge = styled(Badge)<BadgeProps>({
 
 const HeaderTop = (props: any) =>{
 
-    const {shopCartItemsQuantity, favoriteItemsQuantity, isAuth} = useTypeSelector(state => state.userProfile)
+    let {total} = useTypeSelector(state => state.shopCart)
+    
+    const {favoriteItemsQuantity, isAuth, lastName, firstName} = useTypeSelector(state => state.userProfile)
 
     const {fetchUserProfile} = useActions()
 
@@ -64,27 +64,32 @@ const HeaderTop = (props: any) =>{
                         </div>
                         <div className={s.headerElements}>
                             <div className={s.cart}>
-                                <Link to={CART_ROUTE}>
-                                    <IconButton aria-label="cart">
-                                        <StyledBadge badgeContent={shopCartItemsQuantity} >
+                                <IconButton aria-label="cart" disabled={!isAuth}>
+                                    <Link to={CART_ROUTE}>
+                                        <StyledBadge badgeContent={total} >
                                             <ShoppingCartIcon className={s.iconStyle} />
                                         </StyledBadge>
-                                    </IconButton>
-                                </Link>
+                                    </Link>
+                                </IconButton>
                             </div>
                             <div className={s.favourites}>
-                                <Link to={FAVOURITES_ROUTE}>
-                                    <IconButton aria-label="favourites">
-                                        <StyledBadge badgeContent={favoriteItemsQuantity}>
-                                            <FavoriteIcon className={s.iconStyle} />
-                                        </StyledBadge>
-                                    </IconButton>
-                                </Link>
+                                <IconButton aria-label="favourites" disabled={!isAuth}>
+                                        <Link to={FAVOURITES_ROUTE}>
+                                            <StyledBadge badgeContent={favoriteItemsQuantity}>
+                                                <FavoriteIcon className={s.iconStyle} />
+                                            </StyledBadge>
+                                        </Link>
+                                </IconButton>
                             </div>
                             {
                                 isAuth
-                                ? <SingOut />
-                                : <ProfileModal isAuth={isAuth}/> 
+                                ? <SignOut 
+                                    lastName={lastName}
+                                    firstName={firstName}
+                                    />
+                                : <ProfileModal 
+                                    isAuth={isAuth}
+                                    /> 
                             }
                         </div>
                     </div>

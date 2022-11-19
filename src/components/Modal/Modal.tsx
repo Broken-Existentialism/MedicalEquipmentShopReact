@@ -45,7 +45,7 @@ export default function ProfileModal({isAuth}:IProfileModal) {
                <GppGoodIcon fontSize='large' sx={{color: 'green'}}/>
                <Box component="span" sx={{fontSize:'18px'}}>The user is logged in</Box>
             </Box>
-          : <SignIn onCloseModal={handleClose} />
+          :  <SignIn onCloseModal={handleClose}/> 
         }
         </Box>
       </Modal>

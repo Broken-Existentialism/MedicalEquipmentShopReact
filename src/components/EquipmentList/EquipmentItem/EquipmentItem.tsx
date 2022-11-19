@@ -5,8 +5,20 @@ import s from './EquipmentItem.module.css'
 import { IMedicalEquipmentType } from '../../../types/medicalEquipments'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useTypeSelector } from '../../../hooks/useTypeSelector';
+import { createNewShopCartEquipment } from '../../../api/shopCartServiceApi';
+import { useActions } from '../../../hooks/useActions';
 
 const EquipmentItem = ({id, name, year, price, brand, equipmnetType, img}: IMedicalEquipmentType) =>{
+
+    const {isAuth} = useTypeSelector(state => state.userProfile)
+
+    const {fetchShopCartEquipments} = useActions()
+
+    const addToShopCart = async () =>{
+        var result = await createNewShopCartEquipment(id)
+        fetchShopCartEquipments()
+    }
     
     return(
         <Grid item xs={4} >
@@ -41,12 +53,12 @@ const EquipmentItem = ({id, name, year, price, brand, equipmnetType, img}: IMedi
 
                 <Box className={s.cartAndFavorites}>
 
-                    <Button variant="contained" className={s.cartBtn}>
-                        <span>ADD TO CART  </span>
+                    <Button onClick={addToShopCart} variant="contained" className={s.cartBtn} disabled={!isAuth}>
+                        <span>ADD TO CART</span>
                         <AddShoppingCartIcon fontSize='small' />
                     </Button>
 
-                    <IconButton>
+                    <IconButton disabled={!isAuth}>
                             <FavoriteBorderIcon fontSize="large" />
                     </IconButton>
                 </Box>
