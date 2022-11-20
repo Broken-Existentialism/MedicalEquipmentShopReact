@@ -21,7 +21,7 @@ const shopCartEquipmentReducer = (state = initialState, action: ShopCartAction):
                 ...state,
                 loading: false, 
                 error: null, 
-                items:[... action.payload.items],
+                items:[...action.payload.items],
                 total: action.payload.items.length,
             }
         case  ShopCartActionTypes.FETCH_SHOPCART_EQUIPMENTS_ERROR:
@@ -30,6 +30,14 @@ const shopCartEquipmentReducer = (state = initialState, action: ShopCartAction):
                 loading: false, 
                 error: action.payload, 
                 items:[]}
+        case  ShopCartActionTypes.SET_SHOPCART_EQUIPMENTS_DEFAULT:
+            return{
+                ...state,
+                loading: false, 
+                error: null,
+                items:[...action.payload.items],
+                total: action.payload.items.length,
+            }
         default:
             return state
     }

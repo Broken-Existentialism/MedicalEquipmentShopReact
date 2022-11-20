@@ -4,7 +4,7 @@ import { createInstance } from "./api"
 const instance = createInstance('api/Category')
 
 export const getAllCategories = async () =>{
-    var result = await instance.get<ICategoryType>('')
+    var result = await instance.get<Array<ICategoryType>>('')
     return result
 }
 

@@ -6,7 +6,8 @@ import MainPage from "../pages/Main/Main";
 import NotFound from "../pages/NotFound/NotFound";
 import Register from "../pages/Register/Register";
 import ShopCart from "../pages/ShopCart/ShopCart";
-import { ABOUT_ROUTE, CART_ROUTE, CATALOG_ROUTE, CONTACTS_ROUTE, MAIN_ROUTE, NOTFOUND_ROUTE, REGISTER_ROUTE } from "../utils/consts";
+import SinglePage from "../pages/SinglePage/SinglePage";
+import { ABOUT_ROUTE, CART_ROUTE, CATALOG_ROUTE, CATALOG_ROUTE_NESTED, CONTACTS_ROUTE, MAIN_ROUTE, NOTFOUND_ROUTE, REGISTER_ROUTE } from "../utils/consts";
 
 interface IRoute{
     path: string;
@@ -19,7 +20,7 @@ export const authRoutes: IRoute[] = [
         component: <MainPage />,
     },
     {
-        path: CATALOG_ROUTE,
+        path: CATALOG_ROUTE_NESTED,
         component: <Catalog />,
     },
     {
@@ -38,7 +39,10 @@ export const authRoutes: IRoute[] = [
         path: CART_ROUTE,
         component: <ShopCart />
     },
-    
+    {
+        path: CATALOG_ROUTE,
+        component: <SinglePage />
+    },
     {
         path: NOTFOUND_ROUTE,
         component: <NotFound />,

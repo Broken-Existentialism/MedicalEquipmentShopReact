@@ -1,5 +1,6 @@
-import { Box, CircularProgress, Grid, Pagination } from '@mui/material'
+import { Box, Grid, Pagination } from '@mui/material'
 import { IMedicalEquipmentType } from '../../types/medicalEquipments'
+import { Loading } from '../Loading/Loading'
 import EquipmentItem from './EquipmentItem/EquipmentItem'
 
 interface IEquipmentListProps{
@@ -15,9 +16,7 @@ const EquipmentList = ({items, pageIndex, isLoading, count, changePage}:IEquipme
       <Box sx={{display: 'flex', alignItems:'center', flexDirection:'column', minHeight:'100%'}}>
         {
             isLoading 
-            ? <Box sx={{flex: '1 1 auto' , display:'flex', alignItems:'center', justifyContent:'center',}}>
-                <CircularProgress sx={{color:'#A4C9FF'}}/>
-              </Box>
+            ? <Loading />
             : <Grid container rowSpacing={3} columnSpacing={3} >
                 {
                   items.map((item, index) => 

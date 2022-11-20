@@ -1,4 +1,3 @@
-import { request } from "http"
 import { Dispatch } from "react"
 import { getUserById } from "../../api/userServiceApi"
 import { UserProfileAction, UserProfileActionTypes } from "../types/userProfileTypes"

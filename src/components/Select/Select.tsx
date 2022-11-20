@@ -17,10 +17,11 @@ export default function SelectComponent({items, name, handleChangeProps}:ISelect
 
   const handleChange = (event: any) => {
     //const { target: { value }} = event;
+    let value = event.target.value === '' ? null : event.target.value
     setSelectValue(event.target.value);
-    handleChangeProps(event.target.value)
+    handleChangeProps(value)
   };
-
+  
   return (
     <Box sx={{marginBottom:'20px'}}>
       <FormControl variant="standard" sx={{ width: '100%' }}>
@@ -29,7 +30,7 @@ export default function SelectComponent({items, name, handleChangeProps}:ISelect
           value={selectValue}
           onChange={handleChange}
         >
-          <MenuItem value="">
+          <MenuItem value=''>
             <em>None</em>
           </MenuItem>
 

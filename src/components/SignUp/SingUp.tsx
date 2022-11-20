@@ -178,12 +178,12 @@ export default function SignUp(){
             Sign In
         </Button>
         <Grid item>
-          <NavLink to="register" onClick={()=>navigate(MAIN_ROUTE)}>
+          <NavLink to={MAIN_ROUTE} >
             <Box sx={{display:'flex', alignItems:'center'}}>
               <Box component='span' sx={{fontSize:'16px' }}>Go back to the main page</Box>
               <ArrowBackIcon fontSize="medium"/>
             </Box>
-            </NavLink>
+          </NavLink>
         </Grid>  
     </Box>
   </Box>

@@ -2,8 +2,7 @@ import s from './HeaderTop.module.css'
 import {Link} from "react-router-dom";
 
 import logo from '../../../assets/images/MainLogo.png'
-import SearchIcon from '@mui/icons-material/Search';
-import { CART_ROUTE, FAVOURITES_ROUTE, MAIN_ROUTE } from '../../../utils/consts';
+import { CART_ROUTE, FAVOURITES_ROUTE, MAIN_ROUTE, USER_ID } from '../../../utils/consts';
 import { Container } from '@mui/system';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
@@ -15,6 +14,7 @@ import { useEffect} from 'react';
 import { useActions } from '../../../hooks/useActions';
 import ProfileModal from '../../Modal/Modal';
 import { SignOut } from '../../SignOut/SignOut';
+import { Search } from '../../Search/Search';
 
 const StyledBadge = styled(Badge)<BadgeProps>({
   '& .MuiBadge-badge': {
@@ -29,18 +29,18 @@ const StyledBadge = styled(Badge)<BadgeProps>({
 
 const HeaderTop = (props: any) =>{
 
-    let {total} = useTypeSelector(state => state.shopCart)
-    
     const {favoriteItemsQuantity, isAuth, lastName, firstName} = useTypeSelector(state => state.userProfile)
 
-    const {fetchUserProfile} = useActions()
+    const {fetchUserProfile, fetchShopCartEquipments} = useActions()
+
+    const {total} = useTypeSelector(state => state.shopCart)
 
     useEffect(()=>{
         const fetchData = async () =>{
-            let userId: string | null = localStorage.getItem('userId')
-            if(userId)
+            if(USER_ID)
             {
-                fetchUserProfile(userId, true)
+                fetchUserProfile(USER_ID, true)
+                fetchShopCartEquipments()
             }
         }   
         fetchData()
@@ -54,14 +54,7 @@ const HeaderTop = (props: any) =>{
                         <img className={s.logoImage} src={logo} alt="Error"/>
                     </Link>  
                     <div className={s.headerMain}>
-                        <div className={s.headerSearch}>
-                            <form className={s.formBlock}>
-                                <input type="text" placeholder="TYPE YOUR QUERY..." />
-                                <button type="submit">
-                                    <SearchIcon sx={{ color: 'white', fontSize: 40 }} />
-                                </button>
-                            </form>
-                        </div>
+                        <Search />
                         <div className={s.headerElements}>
                             <div className={s.cart}>
                                 <IconButton aria-label="cart" disabled={!isAuth}>

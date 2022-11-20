@@ -1,6 +1,6 @@
 export interface ICatalogItem{
     title: string,
-    icon: string,
+    icon: string | null,
     path: string,
 }
 

@@ -4,18 +4,26 @@ import { Box, CircularProgress} from '@mui/material'
 import ShopCartItemList from "../../components/ShopCart/ShopCartItemList/ShopCartItemList"
 import { useActions } from "../../hooks/useActions"
 import { useTypeSelector } from "../../hooks/useTypeSelector"
+import { useEffect } from "react"
 
 const ShopCart = () =>{
 
-    let {items, error, loading} = useTypeSelector(state => state.shopCart)
+    let {items, loading} = useTypeSelector(state => state.shopCart)
 
     let {fetchShopCartEquipments} = useActions()
 
-      const removeItem = async (id: number) =>{
-        await deleteShopCartEquipmentById(id)
-        var result = await getAllShopCartEquipments()
-        fetchShopCartEquipments()
-      }
+    useEffect(()=>{
+      const fetchData = async () =>{
+         fetchShopCartEquipments()
+      }   
+      fetchData()
+    }, [])
+    
+    const removeItem = async (id: number) =>{
+      await deleteShopCartEquipmentById(id)
+      var result = await getAllShopCartEquipments()
+      fetchShopCartEquipments()
+    }
 
     return(
         <Container>

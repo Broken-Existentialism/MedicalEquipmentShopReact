@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink} from 'react-router-dom'
 import { ICatalogItem } from '../../../types/types'
 import s from './CatalogListItem.module.css'
 
@@ -7,7 +7,7 @@ const CatalogListItem = ({title, icon, path}: ICatalogItem) =>{
         <div className={s.catalogItem}>
             <Link to={path} className={s.itemInner}>
                 <div className={s.itemImg}>
-                    <img src={icon} alt="Error" />
+                    <img src={icon ? icon : ''} alt="Error" />
                 </div>
                 <div className={s.itemTitle}>
                     <p>{title}</p>

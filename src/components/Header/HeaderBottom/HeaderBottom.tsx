@@ -1,7 +1,7 @@
 import s from './HeaderBottom.module.css'
 
 import {NavLink} from 'react-router-dom'
-import { ABOUT_ROUTE, AREAS_ROUTE, CATALOG_ROUTE, CONTACTS_ROUTE, DELIVERY_ROUTE, PARTNERS_ROUTE, SELL_ROUTE } from '../../../utils/consts';
+import { ABOUT_ROUTE, AREAS_ROUTE, CATALOG_ROUTE, CATALOG_ROUTE_NESTED, CONTACTS_ROUTE, DELIVERY_ROUTE, PARTNERS_ROUTE, SELL_ROUTE } from '../../../utils/consts';
 import { Container } from '@mui/system';
 
 interface INavItem{
@@ -16,7 +16,7 @@ const NavMenu: INavItem[] = [
     },
     {
         item: 'Catalog',
-        path: CATALOG_ROUTE,
+        path: `${CATALOG_ROUTE}/${'all'}`,
     },
     {
         item: 'Areas of activity',

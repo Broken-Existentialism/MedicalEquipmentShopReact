@@ -3,6 +3,7 @@ import { getAllBrands } from "../../api/brandServiceApi";
 import { getAllEquipmentTypes } from "../../api/equipmentTypeServiceApi";
 import { IBrandType } from "../../types/brand";
 import { IEquipmentType } from "../../types/equipmentType";
+import { SORT_DIRECTION_ASCENDING, SORT_DIRECTION_DESCENDING } from "../../utils/consts";
 import SelectComponent from "../Select/Select"
 
 const EquipmentNavigation = ({setColumnNameForSorting, setSortDirection, setFilterType, setFilterBrand}: any) =>{
@@ -11,7 +12,7 @@ const EquipmentNavigation = ({setColumnNameForSorting, setSortDirection, setFilt
     const [equipmentTypes, setequipmentTypes] = useState<IEquipmentType[]>([])
 
     const columnNameForSorting: string[] = ['Price', 'Year']
-    const sortingValue: string[] = [ 'Ascending', 'Descending']
+    const sortingValue: string[] = [ SORT_DIRECTION_ASCENDING, SORT_DIRECTION_DESCENDING]
 
     useEffect(()=>{
         const fetchData = async () =>{

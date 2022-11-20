@@ -17,3 +17,12 @@ export const fetchShopCartEquipments = (): any => {
         }
     }
 }
+
+export const setDefaultShopCart= (): ShopCartAction =>{
+    return{
+        type: ShopCartActionTypes.SET_SHOPCART_EQUIPMENTS_DEFAULT,
+        payload: {
+            items: [],
+        }
+    }
+}
