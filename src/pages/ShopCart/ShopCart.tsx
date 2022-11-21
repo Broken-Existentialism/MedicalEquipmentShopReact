@@ -1,10 +1,9 @@
 import { Container } from "@mui/material"
 import { deleteShopCartEquipmentById, getAllShopCartEquipments } from "../../api/shopCartServiceApi"
-import { Box, CircularProgress} from '@mui/material'
 import ShopCartItemList from "../../components/ShopCart/ShopCartItemList/ShopCartItemList"
 import { useActions } from "../../hooks/useActions"
 import { useTypeSelector } from "../../hooks/useTypeSelector"
-import { useEffect } from "react"
+import { Loading } from "../../components/Loading/Loading"
 
 const ShopCart = () =>{
 
@@ -12,16 +11,9 @@ const ShopCart = () =>{
 
     let {fetchShopCartEquipments} = useActions()
 
-    useEffect(()=>{
-      const fetchData = async () =>{
-         fetchShopCartEquipments()
-      }   
-      fetchData()
-    }, [])
-    
     const removeItem = async (id: number) =>{
       await deleteShopCartEquipmentById(id)
-      var result = await getAllShopCartEquipments()
+      
       fetchShopCartEquipments()
     }
 
@@ -29,9 +21,7 @@ const ShopCart = () =>{
         <Container>
             {
                 loading
-                ? <Box sx={{display: 'flex', alignItems:'center', justifyContent:'center', height:'100%'}}>
-                        <CircularProgress sx={{color:'#A4C9FF'}} />
-                  </Box>
+                ? <Loading />
                 : <ShopCartItemList 
                     items={items}
                     removeItem={removeItem}

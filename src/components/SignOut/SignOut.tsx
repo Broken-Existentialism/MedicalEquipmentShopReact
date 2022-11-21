@@ -10,12 +10,13 @@ interface ISignOutProps{
 
 export function SignOut ({firstName, lastName}:ISignOutProps) {
 
-    const {setDefaultUserProfile, setDefaultShopCart} = useActions()
+    const {setDefaultUserProfile, setDefaultShopCart, setDefaultFavorites} = useActions()
     
     const singOut = async () =>{
         logout()
         setDefaultUserProfile()
         setDefaultShopCart()
+        setDefaultFavorites()
     }
 
     return(

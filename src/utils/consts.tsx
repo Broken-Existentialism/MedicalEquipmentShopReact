@@ -1,9 +1,13 @@
 export const MAIN_ROUTE: string = '/'
-export const FAVOURITES_ROUTE: string = '/favourtires'
+export const FAVORITES_ROUTE: string = '/favorites'
 export const CART_ROUTE: string = '/cart'
 export const ABOUT_ROUTE: string = '/about'
 export const CATALOG_ROUTE: string = '/catalog'
 export const CATALOG_ROUTE_NESTED: string = '/catalog/:title'
+
+export const EQUIPMENT_ROUTE: string = '/equipment'
+export const EQUIPMENT_ROUTE_NESTED: string = '/equipment/:id'
+
 export const AREAS_ROUTE: string = '/areas'
 export const SELL_ROUTE: string = '/sell'
 export const PARTNERS_ROUTE: string = '/partners'

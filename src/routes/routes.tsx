@@ -2,12 +2,17 @@ import {ReactElement } from "react";
 import About from "../pages/About/About";
 import Catalog from "../pages/Catalog/Catalog";
 import Contacts from "../pages/Contacts/Contacts";
+import { Favorites } from "../pages/Favorites/Favorites";
 import MainPage from "../pages/Main/Main";
 import NotFound from "../pages/NotFound/NotFound";
 import Register from "../pages/Register/Register";
 import ShopCart from "../pages/ShopCart/ShopCart";
-import SinglePage from "../pages/SinglePage/SinglePage";
-import { ABOUT_ROUTE, CART_ROUTE, CATALOG_ROUTE, CATALOG_ROUTE_NESTED, CONTACTS_ROUTE, MAIN_ROUTE, NOTFOUND_ROUTE, REGISTER_ROUTE } from "../utils/consts";
+import { ABOUT_ROUTE, CART_ROUTE, 
+        CATALOG_ROUTE_NESTED, CONTACTS_ROUTE, 
+        EQUIPMENT_ROUTE_NESTED, FAVORITES_ROUTE,
+        MAIN_ROUTE, 
+        NOTFOUND_ROUTE, REGISTER_ROUTE } from "../utils/consts";
+import EquipmentInfo from "../pages/EquipmentInfo/EquipmentInfo";
 
 interface IRoute{
     path: string;
@@ -40,8 +45,12 @@ export const authRoutes: IRoute[] = [
         component: <ShopCart />
     },
     {
-        path: CATALOG_ROUTE,
-        component: <SinglePage />
+        path: FAVORITES_ROUTE,
+        component: <Favorites />
+    },
+    {
+        path: EQUIPMENT_ROUTE_NESTED,
+        component: <EquipmentInfo />
     },
     {
         path: NOTFOUND_ROUTE,

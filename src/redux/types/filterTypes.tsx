@@ -6,12 +6,14 @@ export interface IFilterState{
     name: string | null,
     brandTitle: string | null,
     typeName: string | null,
+    categoryName: string | null
 }
 
 export interface IFilters{
     name: string | null,
     brandTitle: string | null,
     typeName: string | null,
+    categoryName: string | null
 }
 
 

@@ -40,7 +40,7 @@ export default function SignIn({onCloseModal}: ISingInProps){
     resolver: yupResolver(schema),
   });
 
-  const {fetchUserProfile, fetchShopCartEquipments} = useActions()
+  const {fetchUserProfile, fetchShopCartEquipments, fetchFavoritesEquipments} = useActions()
   
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<any>()
@@ -54,6 +54,7 @@ export default function SignIn({onCloseModal}: ISingInProps){
         localStorage.setItem('token', result.data.token)
         fetchUserProfile(result.data.id, result.data.isAuth)
         fetchShopCartEquipments()
+        fetchFavoritesEquipments()
       }
       catch(ex: any)
       {

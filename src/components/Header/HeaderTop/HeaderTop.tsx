@@ -1,8 +1,7 @@
 import s from './HeaderTop.module.css'
 import {Link} from "react-router-dom";
-
 import logo from '../../../assets/images/MainLogo.png'
-import { CART_ROUTE, FAVOURITES_ROUTE, MAIN_ROUTE, USER_ID } from '../../../utils/consts';
+import { CART_ROUTE, FAVORITES_ROUTE, MAIN_ROUTE, USER_ID } from '../../../utils/consts';
 import { Container } from '@mui/system';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
@@ -27,13 +26,14 @@ const StyledBadge = styled(Badge)<BadgeProps>({
   },
 });
 
-const HeaderTop = (props: any) =>{
+const HeaderTop = () =>{
 
-    const {favoriteItemsQuantity, isAuth, lastName, firstName} = useTypeSelector(state => state.userProfile)
+    const {isAuth, lastName, firstName} = useTypeSelector(state => state.userProfile)
 
-    const {fetchUserProfile, fetchShopCartEquipments} = useActions()
+    const {fetchUserProfile, fetchShopCartEquipments, fetchFavoritesEquipments} = useActions()
 
-    const {total} = useTypeSelector(state => state.shopCart)
+    const shopCart = useTypeSelector(state => state.shopCart)
+    const favorites = useTypeSelector(state => state.favorites)
 
     useEffect(()=>{
         const fetchData = async () =>{
@@ -41,6 +41,7 @@ const HeaderTop = (props: any) =>{
             {
                 fetchUserProfile(USER_ID, true)
                 fetchShopCartEquipments()
+                fetchFavoritesEquipments()
             }
         }   
         fetchData()
@@ -59,7 +60,7 @@ const HeaderTop = (props: any) =>{
                             <div className={s.cart}>
                                 <IconButton aria-label="cart" disabled={!isAuth}>
                                     <Link to={CART_ROUTE}>
-                                        <StyledBadge badgeContent={total} >
+                                        <StyledBadge badgeContent={shopCart.total} >
                                             <ShoppingCartIcon className={s.iconStyle} />
                                         </StyledBadge>
                                     </Link>
@@ -67,8 +68,8 @@ const HeaderTop = (props: any) =>{
                             </div>
                             <div className={s.favourites}>
                                 <IconButton aria-label="favourites" disabled={!isAuth}>
-                                        <Link to={FAVOURITES_ROUTE}>
-                                            <StyledBadge badgeContent={favoriteItemsQuantity}>
+                                        <Link to={FAVORITES_ROUTE}>
+                                            <StyledBadge badgeContent={favorites.total}>
                                                 <FavoriteIcon className={s.iconStyle} />
                                             </StyledBadge>
                                         </Link>

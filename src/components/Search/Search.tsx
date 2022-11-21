@@ -28,6 +28,7 @@ export function Search(){
             name: value,
             brandTitle: value,
             typeName: value,
+            categoryName: value,
         })
         navigate(`${CATALOG_ROUTE}/${'all'}`)
     }

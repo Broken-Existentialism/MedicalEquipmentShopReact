@@ -5,3 +5,7 @@ export interface IFavoriteType{
     price: number,
     img: string | null,
 }
+
+export interface IFavoritesResponce{
+    items: IFavoriteType[]
+}

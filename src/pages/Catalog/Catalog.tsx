@@ -1,12 +1,16 @@
 import { Button, Grid} from '@mui/material'
 import { Container} from '@mui/system'
 import { useEffect} from 'react'
+import { useParams } from 'react-router-dom'
 import EquipmentList from '../../components/EquipmentList/EquipmentList'
 import EquipmentNavigation from '../../components/EquipmentNavigation/EquipmentNavigation'
 import { useActions } from '../../hooks/useActions'
 import { useTypeSelector } from '../../hooks/useTypeSelector'
 
 const Catalog = () =>{
+
+    let categoryTitle: string | undefined= useParams().title
+    console.log(categoryTitle)
 
     let filters = useTypeSelector(state => state.filters)
 
@@ -23,6 +27,7 @@ const Catalog = () =>{
         name: filters.name,
         brandTitle: filters.brandTitle,
         typeName: value,
+        categoryName: filters.categoryName,
       })
     }
 
@@ -31,6 +36,16 @@ const Catalog = () =>{
         name: filters.name,
         brandTitle: value,
         typeName: filters.typeName,
+        categoryName: filters.categoryName,
+      })
+    }
+
+    const setFilterCategory = (value: string) =>{
+      setFilters({
+        name: filters.name,
+        brandTitle: filters.brandTitle,
+        typeName: filters.typeName,
+        categoryName: value,
       })
     }
 
@@ -46,17 +61,24 @@ const Catalog = () =>{
     
     useEffect(()=>{
       const fetchData = async () =>{
-        fetchMedicalEquipments({
-          pageIndex: filters.pageIndex,
-          pageSize: filters.pageSize,
-          columnNameForSorting: filters.columnNameForSorting,
-          sortDirection: filters.sortDirection,
-          requestFilters: {
-            name: filters.name,
-            brandTitle: filters.brandTitle,
-            typeName: filters.typeName
-          }
-        })
+        if(categoryTitle === 'all')
+        {
+          fetchMedicalEquipments({
+            ...filters,
+            requestFilters: {
+              ...filters,
+            }
+          })
+        }
+        else{
+          fetchMedicalEquipments({
+            ...filters,
+            requestFilters: {
+              ...filters,
+              categoryName: categoryTitle,
+            }
+          })
+        }
       }
       fetchData()
     }, [filters])
@@ -75,7 +97,9 @@ const Catalog = () =>{
                       setColumnNameForSorting={setColumnNameForSorting}
                       setSortDirection={setSortDirectionCallback}
                       setFilterType={setFilterType}
-                      setFilterBrand={setFilterBrand}/>
+                      setFilterBrand={setFilterBrand}
+                      setFilterCategory={setFilterCategory}
+                      />
                       <Button variant="outlined" color="error" onClick={setDefaulFilters}>
                         Reset filters
                       </Button>

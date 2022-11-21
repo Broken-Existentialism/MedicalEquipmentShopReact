@@ -40,6 +40,7 @@ export const setDefaulFilters= (): FiltersAction =>{
             name: null,
             brandTitle: null,
             typeName: null,
+            categoryName: null,
         }
     }
 }

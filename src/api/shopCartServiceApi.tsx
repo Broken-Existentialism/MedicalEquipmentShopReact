@@ -15,7 +15,7 @@ export const getAllShopCartEquipments = async () =>{
 }
 
 export const createNewShopCartEquipment = async (equipmentId: number) =>{
-    var result = await instance.post<IShopCartEquipment>(`?MedicalEquipmentId=${equipmentId}`, { params: {MedicalEquipmentId: equipmentId} })
+    var result = await instance.post<IShopCartEquipment>(`?MedicalEquipmentId=${equipmentId}`)
     return result
 }
 

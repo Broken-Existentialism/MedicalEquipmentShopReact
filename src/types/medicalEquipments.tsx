@@ -5,6 +5,7 @@ export interface IMedicalEquipmentType{
     price: number,
     brand: string | null,
     equipmnetType: string | null,
+    categoryName: string | null,
     img: string | null,
 }
 
@@ -27,4 +28,5 @@ interface IRequestFilters{
     name: string | null | undefined,
     brandTitle: string | null | undefined,
     typeName: string | null | undefined
+    categoryName: string | null | undefined,
 }

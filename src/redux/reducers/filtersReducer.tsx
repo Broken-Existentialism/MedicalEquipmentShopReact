@@ -7,7 +7,8 @@ const initialState: IFilterState = {
     sortDirection: null,
     name: null,
     brandTitle: null,
-    typeName: null
+    typeName: null,
+    categoryName: null,
 }
 
 const filtersReducer = (state = initialState, action: FiltersAction): IFilterState =>{

@@ -21,14 +21,15 @@ const EquipmentList = ({items, pageIndex, isLoading, count, changePage}:IEquipme
                 {
                   items.map((item, index) => 
                           <EquipmentItem 
-                              key={index} 
+                              key={index}
                               id={item.id}
                               name={item.name}
                               year={item.year}
                               price={item.price}
                               brand={item.brand}
                               equipmnetType={item.equipmnetType}
-                              img={item.img}/>)
+                              img={item.img} 
+                              categoryName={item.categoryName}/>)
                 }
                </Grid>
         }

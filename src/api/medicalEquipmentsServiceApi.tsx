@@ -17,6 +17,7 @@ export const getAllMedicalEquipments = async (request: IMedicalEquipmentRequest)
         'requestFilters.Name': request.requestFilters?.name,
         'requestFilters.brandTitle': request.requestFilters?.brandTitle,
         'requestFilters.typeName': request.requestFilters?.typeName,
+        'requestFilters.categoryName': request.requestFilters?.categoryName
     }})
     return result
 }

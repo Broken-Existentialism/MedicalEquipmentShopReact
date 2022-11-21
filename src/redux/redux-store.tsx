@@ -5,12 +5,14 @@ import medicalEquipmentsReducer from "./reducers/medicalEquipmentReducer";
 import thunk from 'redux-thunk'
 import shopCartEquipmentReducer from "./reducers/shopCartEquipmentReducer";
 import filtersReducer from "./reducers/filtersReducer";
+import favoriteEquipmentReducer from "./reducers/favoritesReducer";
 
 const rootReducer = combineReducers({
     userProfile: userProfileReducer,
     medicalEquipments: medicalEquipmentsReducer,
     shopCart: shopCartEquipmentReducer,
     filters: filtersReducer,
+    favorites: favoriteEquipmentReducer,
 })
 
 export type RootState = ReturnType<typeof rootReducer>
