@@ -1,17 +1,17 @@
 import { Button, Grid} from '@mui/material'
 import { Container} from '@mui/system'
 import { useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import EquipmentList from '../../components/EquipmentList/EquipmentList'
 import EquipmentNavigation from '../../components/EquipmentNavigation/EquipmentNavigation'
 import { useActions } from '../../hooks/useActions'
 import { useTypeSelector } from '../../hooks/useTypeSelector'
+import { CATALOG_ROUTE } from '../../utils/consts'
 
 const Catalog = () =>{
 
     let categoryTitle: string | undefined= useParams().title
-    console.log(categoryTitle)
-
+  
     let filters = useTypeSelector(state => state.filters)
 
     const {setFilters, setColumnForSorting, setPageIndex, setSortDirection, setDefaulFilters} = useActions()
@@ -89,6 +89,7 @@ const Catalog = () =>{
       }
     },[])
 
+  
     return(
         <Container> 
             <Grid container rowSpacing={0} columnSpacing={2}>
@@ -101,7 +102,9 @@ const Catalog = () =>{
                       setFilterCategory={setFilterCategory}
                       />
                       <Button variant="outlined" color="error" onClick={setDefaulFilters}>
-                        Reset filters
+                        <Link to={`${CATALOG_ROUTE}/${'all'}`}>
+                          Reset filters
+                        </Link>
                       </Button>
                 </Grid>
                 <Grid item xs={9.5}>

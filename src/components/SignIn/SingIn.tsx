@@ -11,6 +11,7 @@ import { login } from "../../api/authentificationServiceApi";
 import { useActions } from "../../hooks/useActions";
 import { useState } from "react";
 import GppBadIcon from '@mui/icons-material/GppBad';
+import { OutlinedAdornmentPassword } from "../OutlinedAdornmentPassword/OutlinedAdornmentPassword";
 
 interface ISingInProps{
   onCloseModal: any
@@ -31,7 +32,7 @@ const schema = yup.object({
 
 export default function SignIn({onCloseModal}: ISingInProps){
 
-  const { control, handleSubmit, formState:{ errors } } = useForm({
+  const { control, handleSubmit, formState:{ errors }} = useForm({
     defaultValues: {
       email: '',
       password: '',
@@ -86,43 +87,35 @@ export default function SignIn({onCloseModal}: ISingInProps){
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}> <LockOutlinedIcon /> </Avatar>
             <Typography component="h1" variant="h5"> Sign in </Typography>
             <Box component="form"  onSubmit={handleSubmit(onSubmit)} >
+        
               <Controller
-                 name="email"
-                 control={control}
-                 render={({ field }) => <TextField 
-                     fullWidth
-                     margin="normal"
-                     required
-                     label="Email Address" 
-                     type="email"  
-                     autoFocus
-                     helperText={errors?.email && String(errors.email.message)} 
-                     placeholder="Email Address"{...field} />}/>
+                  name="email"
+                  control={control}
+                  render={({ field }) => 
+                  <TextField 
+                      fullWidth
+                      margin="normal"
+                      required
+                      label="Email Address" 
+                      type='text'
+                      autoFocus
+                      helperText={errors?.email && String(errors.email.message)} 
+                      placeholder="Email Address" {...field} />}/>
                      
-              <Controller 
-                name="password"
-                control={control}
-                render={({ field }) => <TextField
-                    fullWidth
-                    margin="normal" 
-                    required
-                    label="Password" 
-                    type="password" 
-                    helperText={errors?.password && String(errors.password.message)} 
-                    placeholder="Password" {...field} />}/>
-                        
-              <Controller 
-                name="confirmPassword"
-                control={control}
-                render={({ field }) => <TextField
-                    fullWidth
-                    margin="normal" 
-                    required
-                    label="Confirm Password" 
-                    type="password" 
-                    helperText={errors?.confirmPassword && String(errors.confirmPassword.message)} 
-                    placeholder="Confirm Password" {...field} />}/>
-                        
+              <OutlinedAdornmentPassword
+                  name="password" 
+                  inputLable="Password"
+                  placeHolderText="Password"
+                  errorMessange= {errors?.password && String(errors.password.message)} 
+                  callbackControll={control}/>
+
+            <OutlinedAdornmentPassword
+                  name="confirmPassword" 
+                  inputLable="Confirm Password"
+                  placeHolderText="Confirm Password"
+                  errorMessange= {errors?.confirmPassword && String(errors.confirmPassword.message)} 
+                  callbackControll={control}/>
+
               <Button
                  type="submit"
                  fullWidth
@@ -139,3 +132,17 @@ export default function SignIn({onCloseModal}: ISingInProps){
     </Container>
   );
 };
+
+/*
+<Controller 
+                name="password"
+                control={control}
+                render={({ field }) => <TextField
+                    fullWidth
+                    margin="normal" 
+                    required
+                    label="Password" 
+                    type="password" 
+                    helperText={errors?.password && String(errors.password.message)} 
+                    placeholder="Password" {...field} />}/>
+*/
