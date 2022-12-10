@@ -27,3 +27,6 @@ export const TELEGRAM_ROUTE: string ='https://web.telegram.org/z/'
 export const YOUTUBE_ROUTE: string ='https://www.youtube.com/'
 export const INSTAGRAM_ROUTE: string = 'https://www.instagram.com/'
 
+
+const TEST = 'TEST'
+
