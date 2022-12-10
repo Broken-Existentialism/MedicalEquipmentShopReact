@@ -118,7 +118,7 @@ export default function SignUp(){
                     required
                     label="Last Name" 
                     type="text"  
-                    autoFocus
+                    
                     helperText={errors?.lastName && String(errors.lastName.message)} 
                     placeholder="Last Name"{...field} />}/>
           </Grid>
@@ -132,7 +132,7 @@ export default function SignUp(){
                 required
                 label="Email Address" 
                 type="email"  
-                autoFocus
+                
                 helperText={errors?.email && String(errors.email.message)} 
                 placeholder="Email Address"{...field} />}/>
         <Controller
@@ -144,7 +144,7 @@ export default function SignUp(){
               required
               label="Phone Number" 
               type="text"  
-              autoFocus
+              
               helperText={errors?.phoneNumber && String(errors.phoneNumber.message)} 
               placeholder="Phone Number"{...field} />}/>
         <Controller 

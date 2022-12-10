@@ -35,7 +35,7 @@ export const setDefaulFilters= (): FiltersAction =>{
         payload: {
             pageIndex: CURRENT_PAGE,
             pageSize: PAGE_SIZE,
-            columnNameForSorting: null,
+            columnNameForSorting: 'price',
             sortDirection: SORT_DIRECTION_ASCENDING,
             name: null,
             brandTitle: null,

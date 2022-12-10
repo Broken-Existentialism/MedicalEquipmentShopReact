@@ -3,7 +3,7 @@ import { FiltersAction, FiltersActionTypes, IFilterState } from "../types/filter
 const initialState: IFilterState = {
     pageIndex: 1,
     pageSize: 3,
-    columnNameForSorting: null,
+    columnNameForSorting: 'price',
     sortDirection: null,
     name: null,
     brandTitle: null,

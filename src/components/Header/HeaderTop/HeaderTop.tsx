@@ -1,7 +1,7 @@
 import s from './HeaderTop.module.css'
 import {Link} from "react-router-dom";
 import logo from '../../../assets/images/MainLogo.png'
-import { CART_ROUTE, FAVORITES_ROUTE, MAIN_ROUTE, USER_ID } from '../../../utils/consts';
+import { CART_ROUTE, FAVORITES_ROUTE, MAIN_ROUTE} from '../../../utils/consts';
 import { Container } from '@mui/system';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
@@ -37,9 +37,10 @@ const HeaderTop = () =>{
 
     useEffect(()=>{
         const fetchData = async () =>{
-            if(USER_ID)
+            let userId = localStorage.getItem('userId')
+            if(userId)
             {
-                fetchUserProfile(USER_ID, true)
+                fetchUserProfile(userId, true)
                 fetchShopCartEquipments()
                 fetchFavoritesEquipments()
             }

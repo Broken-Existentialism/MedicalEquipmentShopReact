@@ -24,6 +24,7 @@ export function Search(){
     }
     
     const submitValue = () =>{
+        setValue('')
         setFilters({
             name: value,
             brandTitle: value,
