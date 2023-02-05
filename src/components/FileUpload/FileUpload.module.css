@@ -1,0 +1,25 @@
+.fileUploadButton{
+    margin-top: 13%;
+}
+
+.fileUploadButton input[type="file"] {
+    display: none;
+}
+
+.fileUploadButton label{
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Roboto Condensed', Arial, sans-serif;
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 40px;
+    background-color: rgb(150, 240, 150);
+    color: white;
+    cursor: pointer;
+}
+
+.fileUploadButton label:hover{
+    border: 1px solid black;
+}

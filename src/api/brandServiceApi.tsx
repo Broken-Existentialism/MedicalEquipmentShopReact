@@ -3,6 +3,12 @@ import { createInstance } from "./api"
 
 const instance = createInstance('api/Brands')
 
+instance.interceptors.request.use((config: any) =>{
+
+    config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
+    return config
+})
+
 export const getBrandById = async (id: number) =>{
     var result = await instance.get<IBrandType>(`${id}`)
     return result

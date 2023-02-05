@@ -8,6 +8,7 @@ export const CATALOG_ROUTE_NESTED: string = '/catalog/:title'
 export const EQUIPMENT_ROUTE: string = '/equipment'
 export const EQUIPMENT_ROUTE_NESTED: string = '/equipment/:id'
 
+export const ADMIN_PANEL: string = '/admin'
 export const AREAS_ROUTE: string = '/areas'
 export const SELL_ROUTE: string = '/sell'
 export const PARTNERS_ROUTE: string = '/partners'

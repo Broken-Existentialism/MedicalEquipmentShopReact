@@ -6,5 +6,11 @@ export interface IBrandType{
     img: string | null,
 }
 
+export interface ICreateBrandType{
+    title: string,
+    country: string,
+    discount: string| null,
+}
+
 
 export {}

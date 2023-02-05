@@ -1,7 +1,7 @@
 import s from './HeaderTop.module.css'
 import {Link} from "react-router-dom";
 import logo from '../../../assets/images/MainLogo.png'
-import { CART_ROUTE, FAVORITES_ROUTE, MAIN_ROUTE} from '../../../utils/consts';
+import { ADMIN_PANEL, CART_ROUTE, FAVORITES_ROUTE, MAIN_ROUTE} from '../../../utils/consts';
 import { Container } from '@mui/system';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
@@ -14,6 +14,8 @@ import { useActions } from '../../../hooks/useActions';
 import ProfileModal from '../../Modal/Modal';
 import { SignOut } from '../../SignOut/SignOut';
 import { Search } from '../../Search/Search';
+import { Box } from '@mui/material';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 
 const StyledBadge = styled(Badge)<BadgeProps>({
   '& .MuiBadge-badge': {
@@ -28,7 +30,7 @@ const StyledBadge = styled(Badge)<BadgeProps>({
 
 const HeaderTop = () =>{
 
-    const {isAuth, lastName, firstName} = useTypeSelector(state => state.userProfile)
+    const {isAuth, lastName, firstName,  role} = useTypeSelector(state => state.userProfile)
 
     const {fetchUserProfile, fetchShopCartEquipments, fetchFavoritesEquipments} = useActions()
 
@@ -76,6 +78,16 @@ const HeaderTop = () =>{
                                         </Link>
                                 </IconButton>
                             </div>
+                            {
+                                role === 'Administrator' && 
+                                <IconButton aria-label="cart" disabled={!isAuth}>
+                                    <Link to={ADMIN_PANEL}>
+                                        <StyledBadge>
+                                            <AdminPanelSettingsIcon  className={s.iconStyle} />
+                                        </StyledBadge>
+                                    </Link>
+                                </IconButton>
+                            }
                             {
                                 isAuth
                                 ? <SignOut 

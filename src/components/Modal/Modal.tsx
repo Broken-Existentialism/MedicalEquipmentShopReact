@@ -30,7 +30,7 @@ export default function ProfileModal({isAuth}:IProfileModal) {
   return (
     <div>
       <IconButton onClick={handleOpen} aria-label="login">
-            <LoginOutlinedIcon  sx={{color:'#434343', fontSize:'2rem !important'}}/>
+        <LoginOutlinedIcon  sx={{color:'#434343', fontSize:'2rem !important'}}/>
       </IconButton>
       <Modal
         open={open}
