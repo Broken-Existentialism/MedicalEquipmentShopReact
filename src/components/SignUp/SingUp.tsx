@@ -62,7 +62,7 @@ export default function SignUp(){
     {
       let result = await registration(data)
       navigate(MAIN_ROUTE)
-      console.log(result)
+      //console.log(result)
     }
     catch(ex: any)
     {

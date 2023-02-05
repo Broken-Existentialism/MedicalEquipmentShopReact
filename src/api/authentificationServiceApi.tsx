@@ -9,7 +9,7 @@ export const registration  = async (data: IRegisterRequest ): Promise<AxiosRespo
     return result
 }
 
-export const login = async (data: ILoginRequest): Promise<AxiosResponse<ILoginResponce>>=>{
+export const login = async (data: any): Promise<AxiosResponse<ILoginResponce>>=>{
     let result = await instance.post<ILoginResponce>('login', data, { headers: { "Content-Type": "multipart/form-data"}})
     return result
 }

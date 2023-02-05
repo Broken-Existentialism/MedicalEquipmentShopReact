@@ -47,10 +47,18 @@ export default function SignIn({onCloseModal}: ISingInProps){
   const [error, setError] = useState<any>()
 
   const onSubmit = async (data : ILoginRequest) =>{
+
+
+    let formData: FormData = new FormData()
+    formData.append('email', data.email)
+    formData.append('password', data.password)
+    formData.append('confirmPassword', data.confirmPassword)
+
+
      setLoading(true)
       try
       {
-        let result = await login(data);
+        let result = await login(formData);
         localStorage.setItem('userId', result.data.id)
         localStorage.setItem('token', result.data.token)
         fetchUserProfile(result.data.id, result.data.isAuth)
@@ -109,7 +117,7 @@ export default function SignIn({onCloseModal}: ISingInProps){
                   errorMessange= {errors?.password && String(errors.password.message)} 
                   callbackControll={control}/>
 
-            <OutlinedAdornmentPassword
+              <OutlinedAdornmentPassword
                   name="confirmPassword" 
                   inputLable="Confirm Password"
                   placeHolderText="Confirm Password"

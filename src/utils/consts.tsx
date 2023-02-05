@@ -8,6 +8,7 @@ export const CATALOG_ROUTE_NESTED: string = '/catalog/:title'
 export const EQUIPMENT_ROUTE: string = '/equipment'
 export const EQUIPMENT_ROUTE_NESTED: string = '/equipment/:id'
 
+export const ADMIN_PANEL: string = '/admin'
 export const AREAS_ROUTE: string = '/areas'
 export const SELL_ROUTE: string = '/sell'
 export const PARTNERS_ROUTE: string = '/partners'
@@ -26,4 +27,7 @@ export const FACEBOOK_ROUTE: string = 'https://www.facebook.com/'
 export const TELEGRAM_ROUTE: string ='https://web.telegram.org/z/'
 export const YOUTUBE_ROUTE: string ='https://www.youtube.com/'
 export const INSTAGRAM_ROUTE: string = 'https://www.instagram.com/'
+
+
+const TEST = 'TEST'
 
