@@ -1,0 +1,22 @@
+.brandItem{
+    width: 20%;
+    padding: 10px;
+}
+
+.itemImg{
+    display: flex;
+    height: 100px;
+    justify-self: center;
+    align-items: center;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 2px 18px rgba(0, 0, 0, 0.15);
+    transition: all 0.2s linear;
+}
+
+.itemImg img {
+    display: block;
+    margin: auto;
+    max-height: 100%;
+    max-width: 100%;
+}

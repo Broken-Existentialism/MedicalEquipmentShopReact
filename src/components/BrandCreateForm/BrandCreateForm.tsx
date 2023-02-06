@@ -3,13 +3,14 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import {Box, Grid, CircularProgress} from "@mui/material";
+import {Box, Grid, CircularProgress, Typography} from "@mui/material";
 import { useState } from "react";
 import { ICreateBrandType } from "../../types/brand";
 import { createNewBrand} from "../../api/brandServiceApi";
 import ErrorIcon from '@mui/icons-material/Error';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import { FileUpload } from "../FileUpload/FileUpload";
+import TextLable from "../TextLable/TextLable";
 
 const schema = yup.object({
     title: yup.string()
@@ -73,7 +74,8 @@ export default function BrandCreateForm(){
     };
  
     return (
-        <Box sx={{width: '400px', display: 'flex', flexDirection: 'column',}}>
+        <Box sx={{width: '400px', display: 'flex', flexDirection: 'column'}}>
+            <Typography variant="h5">Create Brand</Typography>
             {loading && <CircularProgress sx={{color:'#A4C9FF'}}/>}
             {error && 
                 <Box sx={{display:'flex', alignItems: 'center', justifyContent:'center', margin:'10px'}}> 

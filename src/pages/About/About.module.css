@@ -1,15 +1,30 @@
-.block{ 
-    height: 90px;
-    overflow-y: scroll;
-    display: inline-block;
-}
-.block li{
-    width: 200px;
-    height: 20px;
-    border: 1px solid black;
-    display: block; 
+.companyInfoBlock{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.mainBlock{
+.companyInfoText {
+    padding: 15px 15px 15px 0px;
+    flex: 0 0 55%;
+}
 
+.companyInfoPhotoBlock{
+    flex: 1 1 auto;
+    height: 320px;
+    padding: 15px 0px 15px 15px;
+}
+
+.companyInfoBlock p{
+    text-indent: 20px;
+    line-height: 24px;
+    font-size: 18px;
+    font-family: 'Roboto Condensed', Arial, sans-serif;
+    text-align: justify;
+}
+
+.companyInfoPhotoBlock img{
+    width: 100%;
+    height: 100%;
 }
