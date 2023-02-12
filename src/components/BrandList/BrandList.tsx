@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { getAllBrands } from "../../api/brandServiceApi";
 import { IBrandType } from "../../types/brand";
 import { Loading } from "../Loading/Loading";
@@ -7,7 +7,12 @@ import BrandListItem from "./BrandListItem/BrandListItem";
 import style from './BrandList.module.css'
 import TextLable from "../TextLable/TextLable";
 
-export default function BrandList (){
+interface IProps{
+    show: boolean
+}
+
+
+export default function BrandList({show}: IProps){
 
     const [categoryItems, setCategoryItems] = useState<IBrandType[]>([])
     const [loading, setLoading] = useState<boolean>(false);
@@ -34,7 +39,7 @@ export default function BrandList (){
 
     return(
         <div>
-            <TextLable text={"Our Brands"} />
+            <TextLable text={"Our Brands"} show={show}  />
             {
                 loading
                 ? <Loading />

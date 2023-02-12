@@ -11,9 +11,10 @@ import { ABOUT_ROUTE, ADMIN_PANEL, CART_ROUTE,
         CATALOG_ROUTE_NESTED, CONTACTS_ROUTE, 
         EQUIPMENT_ROUTE_NESTED, FAVORITES_ROUTE,
         MAIN_ROUTE, 
-        NOTFOUND_ROUTE, REGISTER_ROUTE } from "../utils/consts";
+        NOTFOUND_ROUTE, REGISTER_ROUTE, SELL_EQUIPMENT_ROUTE } from "../utils/consts";
 import EquipmentInfo from "../pages/EquipmentInfo/EquipmentInfo";
 import AdminPanel from "../pages/AdminPanel/AdminPanel";
+import { SellEquipment } from "../pages/SellEquipment/SellEquipment";
 
 interface IRoute{
     path: string;
@@ -44,6 +45,10 @@ export const authRoutes: IRoute[] = [
     {
         path: CART_ROUTE,
         component: <ShopCart />
+    },
+    {
+        path: SELL_EQUIPMENT_ROUTE,
+        component: <SellEquipment />
     },
     {
         path: FAVORITES_ROUTE,

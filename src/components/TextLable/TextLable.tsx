@@ -3,10 +3,11 @@ import style from './TextLable.module.css'
 
 interface ITextLableProps{
     text: string
+    show: boolean
 }
 
-export default function TextLable({text}:ITextLableProps){
+export default function TextLable({text, show}:ITextLableProps){
     return(
-        <Typography className={style.blockText}>{text}</Typography >
+        <Typography sx={{display: `${show ? '' : 'none'}`}} className={style.blockText}>{text}</Typography >
     )
 }

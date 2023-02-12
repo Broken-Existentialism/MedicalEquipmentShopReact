@@ -25,7 +25,7 @@ const About = () => {
           <img src={companyInfoPhoto} alt='Error' />
         </Box>
       </Box>
-      <BrandList />
+      <BrandList show={true} />
     </Container>
   );
 };

@@ -15,6 +15,7 @@ export const PARTNERS_ROUTE: string = '/partners'
 export const DELIVERY_ROUTE: string = '/delivery'
 export const CONTACTS_ROUTE: string = '/contacts'
 export const REGISTER_ROUTE: string = '/register'
+export const SELL_EQUIPMENT_ROUTE:string = '/sell'
 export const NOTFOUND_ROUTE: string = '*'
 export const USER_ID: string | null = localStorage.getItem('userId')
 

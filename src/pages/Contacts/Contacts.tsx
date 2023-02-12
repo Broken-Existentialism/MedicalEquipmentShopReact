@@ -8,19 +8,38 @@ import { styled } from '@mui/system';
 import { FormInputSelect } from './FormInputSelect';
 import { FormInputDate } from './FormInputDate';
 import moment from 'moment';
+import { FormInputMultiCheckbox } from './FormInputMultiCheckbox';
+import { FormInputSlider } from './FormInputSlider';
+import * as yup from "yup";
+import { yupResolver } from '@hookform/resolvers/yup';
+
+const schema = yup.object({
+  date: yup.string().test(
+    'date-format',
+    'Invalid date format. Must be MM.DD.YYYY',
+    dateString => moment(dateString, 'MM.DD.YYYY', true).isValid()
+  ).test(
+    'date-range',
+    `Date must be between 01/01/2000 and 12/31/${moment().year()}`,
+    dateString => {
+      const date = moment(dateString, 'MM.DD.YYYY');
+      return date.isBetween(moment('2000-01-01'), moment(`${moment().year()}-12-31`));
+    }
+  )
+}).required()
 
 
 const options = [
   {
-      label: "Radio Option 1",
+      label: "Option 1",
       value:  "1",
   },
   {
-      label: "Radio Option 2",
+      label: "Option 2",
       value:  "2",
   },
   {
-      label: "Radio Option 3",
+      label: "Option 3",
       value:  "3",
   },
 ]
@@ -29,8 +48,9 @@ interface IFormState{
   text: string,
   radioOption: string,
   selectOption: string,
-  date: moment.Moment,
-  checkbox: string,
+  date: string,
+  checkboxOptions: string[],
+  sliderValue: number,
 }
 
 const BoxForm = styled(Box)({
@@ -43,14 +63,16 @@ const BoxForm = styled(Box)({
 
 const Contacts = () => {
 
-  const {control, handleSubmit, formState:{errors}} = useForm<IFormState>({
+  const {control, handleSubmit, formState:{errors}, setValue} = useForm<IFormState>({
     defaultValues:{
       text: '',
-      radioOption: '1',
+      radioOption: '',
       selectOption: '',
-      date: moment('2022-01-01T00:00:00.000Z', moment.ISO_8601).format(),
-      checkbox: 'default',
-    }
+      date: moment().format('MM.DD.YYYY'),
+      checkboxOptions: [],
+      sliderValue: 0,
+    },
+    resolver: yupResolver(schema),
   })
 
   const onSubmitForm = (data: IFormState) =>{
@@ -59,7 +81,9 @@ const Contacts = () => {
 
   return (
     <Container>
-      <BoxForm
+      {
+        /*
+          <BoxForm
         component="form" 
         onSubmit={handleSubmit(onSubmitForm)}
       >
@@ -87,10 +111,23 @@ const Contacts = () => {
 
       <FormInputDate 
         name={'date'} 
-        label={''} 
+        label={'Calendar'} 
         controlCallback={control} 
-        dateFormat={''} />
+        dateFormat={'MM.DD.YYYY'}
+        errorMessage={errors?.date && String(errors.date.message)}
+        />
 
+      <FormInputMultiCheckbox 
+        name={'checkboxOptions'} 
+        controlCallback={control} 
+        label={'Checkbox'} 
+        checkboxOptions={options} />
+
+      <FormInputSlider 
+        name={'sliderValue'} 
+        label={'Slider'} 
+        controlCallback={control} />
+      
       <Button 
         type="submit" 
         fullWidth 
@@ -101,6 +138,8 @@ const Contacts = () => {
       </Button>
 
       </BoxForm>
+        */
+      }
     </Container>
   )
 }
